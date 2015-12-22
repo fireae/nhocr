@@ -1,0 +1,55 @@
+----------------------------------------------------------------
+  cctable file format  (Rev. 20091012)
+----------------------------------------------------------------
+
+OutCode  DicCode  GeomHint  PosHint  Direction  CharClass FontName
+(Fields must be separated by TABs.)
+
+
+OutCode:  Character codes in UTF-8 used for OCR output
+
+DicCode:  Character codes in UTF-8 used for making dictionary
+
+GeomHint:  Geometry hint
+(combination)
+  U  None (don't care)
+  N  Normal / Capital
+  S  Small
+  T  Tiny
+  A  With ascender (future option)
+  D  With descender (future option)
+  W  Wide character
+
+PosHint:  Position hint
+(combination)
+  L  Left
+  C  Center
+  R  Right
+  T  Top
+  M  Middle
+  B  Bottom
+
+Direction:  Writing direction
+(exclusive)
+  -  Both (don't care)
+  H  Horizontal
+  V  Vertical
+
+CharClass:  Character class
+(exclusive)
+  A  Alphabet, Numeral (narrow characters only)
+  L  Logogram / Hangul (incl. wide alphabet)
+  S  Symbol
+
+FontName:  Font short name
+
+
+Examples:
+!       !       U       CM      -       A       -
+'	'	T	LT	-	A	-
+0	0	N	CM	-	A	-
+1	1	U	CM	-	A	-
+C	C	N	CM	-	A	-
+a	a	NS	CM	-	A	-
+b	b	NSA	CM	-	A	-
+c	c	S	CM	-	A	-

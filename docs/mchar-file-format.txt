@@ -1,0 +1,67 @@
+----------------------------------------------------------------
+  File format in multi-character recognition mode
+    (Rev. 20100201)
+----------------------------------------------------------------
+
+Input file:
+--------------------------------
+The input file must be in PBM, PGM, or PPM format.
+
+The width of the input image is used as the size of the
+individual character image. NHocr assumes that the character
+images are stacked vertically.
+For example, if the size of the input image is W x H, NHocr
+assumes that the file contains [H/W] character images, each of
+which is with W x W pixels.
+
+Each character image is binarized and recognized separately.
+
+If margins are required around the character image within a
+W x W-pixel window, the image must be placed on the left-top
+corner. The margin(s) must be filled with 255s (complete white),
+or with 0s (white background) in PBM format.
+
+
+
+
+Output file:
+--------------------------------
+The file is in UTF-8.
+
+Lines beginning with "#" are comments lines.
+
+Items are separated by a TAB character (09h).
+
+Character (image) block begins with a line like
+
+IMG	n
+
+where "IMG" is the tag and "n" is the serial number of the block
+starting with 0.
+
+The IMG line is followed by character candidate line(s) sorted
+in the ascending order of the rank. Each line looks like
+
+R	1	東	0.9	0	2.4283356e+00
+
+The tag "R" is followed by the rank, candidate character
+code(s), OCR-engine-specific confidence value (0.0-1.0),
+similarity, and distance/dissimilarity.
+
+The confidence value is not available if it is zero.
+The similarity is not available if it is zero.
+Both the similarity and distance fields may be omitted.
+The distance field may be omitted if the similarity field exists.
+
+The result lines are terminated by a blank line. The number of
+candidates can vary depending on the recognition result.
+
+The third field can have more than one characters in some 
+special cases as follows.
+
+  \  (backslash + SPACE) :  the result is a SPACE character
+  \\ (backslash + backslash) :
+      the result is a backslash character
+  string of some characters :  the image seems a ligature, etc.
+
+--

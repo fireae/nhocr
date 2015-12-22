@@ -1,0 +1,28 @@
+dnl Process this file with autoconf to produce a configure script
+AC_PREREQ(2.53)
+AC_INIT(O2-tools, 2.00, http://www.sc.isc.tohoku.ac.jp/~hgot/)
+
+AC_PREFIX_DEFAULT($HOME/O2)
+
+AM_INIT_AUTOMAKE([foreign])
+
+test "x$CFLAGS" = "x" && CFLAGS="-O3 --unroll-loops"
+test "x$CXXFLAGS" = "x" && CXXFLAGS="-O3 --unroll-loops"
+AC_PROG_CC
+AC_PROG_CXX
+AC_PROG_RANLIB
+
+AC_CONFIG_FILES([Makefile])
+AC_CONFIG_FILES([include/Makefile])
+AC_CONFIG_FILES([man4/Makefile])
+AC_CONFIG_FILES([libsrc/Makefile])
+AC_CONFIG_FILES([libsrc/PS/Makefile \
+  libsrc/libimgo/Makefile libsrc/libsgp/Makefile libsrc/libufp/Makefile \
+  libsrc/objgrp/Makefile libsrc/siplib/Makefile libsrc/xiplib/Makefile])
+AC_CONFIG_FILES([bmptopnm/Makefile \
+  breduce/Makefile lpsmooth/Makefile \
+  makecr/Makefile makepr/Makefile \
+  prlst2ps/Makefile])
+
+AC_OUTPUT
+

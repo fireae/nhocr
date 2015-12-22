@@ -1,0 +1,22 @@
+#!/bin/bash
+
+# horizontal mode
+for n in fs.pgm hello.pgm ; do
+echo -n "$n: "
+NHOCR_DICDIR=../dic ../nhocr/nhocr -line -o - $n
+done
+
+echo 
+
+# vertical mode
+for n in tohoku.pgm ; do
+echo -n "$n: "
+NHOCR_DICDIR=../dic ../nhocr/nhocr -line -o - -vert $n
+done
+
+echo 
+
+for n in tohoku3.pgm ; do
+echo "$n: "
+NHOCR_DICDIR=../dic ../nhocr/nhocr -mchar -o - -top 5 $n
+done

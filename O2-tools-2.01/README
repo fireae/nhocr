@@ -1,0 +1,170 @@
+/*
+    Tools and libraries for image processing and O2-products
+        http://www.imglab.org/p/O2/
+    Release 2.01
+
+    README,   by Hideaki Goto Aug. 2014
+*/
+
+/*--------------------------------------------------------------------
+  Copyright (C) 1997-2014  Hideaki Goto
+
+        All Rights Reserved
+
+  Permission to use, copy, modify, and distribute this software and
+  its documentation for any purpose is hereby granted without fee,
+  provided that (i) the above copyright notice and this permission
+  notice appear in all copies and in supporting documentation, (ii)
+  the name of the author, Hideaki Goto, may not be used in any
+  advertising or otherwise to promote the sale, use or other
+  dealings in this software without prior written authorization
+  from the author, (iii) this software may not be used for
+  commercial products without prior written permission from the
+  author, and (iv) the notice of modification is specified in cases
+  where modified copies of this software are distributed.
+
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND.
+  THE AUTHOR WILL NOT BE RESPONSIBLE FOR ANY DAMAGE CAUSED BY THIS
+  SOFTWARE.
+--------------------------------------------------------------------*/
+
+
+1. About this package.
+
+  The programs and libraries in this package are originally my private
+  image processing stuff designed especially suitable for document
+  image processing.  Some redundant and experimental codes may be
+  included in this package.  The programs or the libraries were not
+  necessarily designed to provide tools which were universal and
+  convenient to everybody.  However, you could find some convenient
+  programs in this package.
+
+  ImageMagick and Netpbm, the famous image processing packages,
+  provide universal and very convenient tools to us. The programs
+  in those packages work well for small images. (I often use them:)
+  However, unfortunately, some of the programs does not work fast
+  enough for very large images, so that they are not applicable to
+  document image processing.
+
+  Most of the programs in this package have been designed carefully
+  to avoid slowing down even for huge images, e.g. 3300x4700. 
+  I hope you will find them better.
+
+  This package contains following programs:
+
+    bmptopnm - convert a BMP(DIB) file into a portable anymap
+
+    breduce  - read a portable bitmap and reduce it N times
+
+    makecr   - create circumscribing rectangles (bounding box) in an
+               image
+
+    makepr   - create Primitive Rectangles in an image
+
+    prlst2ps - produce  PostScript  data  from  rectangle/line-
+               segment data
+
+    lpsmooth - smooth an image preserving thin lines
+
+  This package may contain some codes contributed by other authors.
+  There is a copyright notice in every file of the source code.  All
+  authors have granted that you have the right to use and distribute
+  their code without paying them, as long as you do it on a non-
+  commercial act.  Please remember to check the copyright notes.
+
+
+2. Changes in version 2.01
+
+    1) Dependency on unistd.h has been removed.
+
+
+3. Requirements
+
+  UNIX(-like) Operating Systems:
+
+    1) ANSI C and C++ compilers.
+       Using GNU's gcc and g++ is the easiest way, if you don't care
+       about the speed of the programs. I'd like to recommend you to
+       try better compilers with good optimizations in order to get
+       faster executables.
+
+    2) "make" command.
+
+    3) Autoconf compatible environment in which you can run
+       "configure" script.
+
+
+  Windows Operating Systems:
+
+    1) ANSI C and C++ compilers. (Never use 16bit-compilers!)
+       Microsoft Visual C++ 2.0 or later is desirable.
+
+
+4. How to make programs.
+
+  UNIX(-like) Operating Systems:
+
+    1)  Run configure script in the top directory.
+        For example,
+          $ ./configure
+
+        To change the installation directory, try something like
+          $ ./configure --prefix=$HOME/O2/x86_64-sun-solaris
+
+        To change the optimization flags, try
+          $ CFLAGS="-O2" CXXFLAGS="-O2" ./configure
+          (on bash)
+
+    2)  Run make command to build the tools and libraries.
+        For example,
+          $ make
+
+        If you want to change the platform OS or architecture,
+        run ./configure again and type
+          $ make clean && make
+
+    3)  Run make command to install the tools, libraries,
+        and manuals.
+
+          # make install
+
+
+  Windows Operating Systems:
+
+    I'm sorry that no project file is provided.
+    Please build all the libraries as "static library" manually.
+    And, please build all the programs manually.
+
+
+5. Troubleshooting
+
+  1)  If some typedefs for unsigned variables, uchar, ushort, ulong
+      and uint, are missing or conflict with system definitions,
+      edit "include/utypes.h" according to your environment.
+
+  2)  Under AIX4, "install" command may not work correctly for
+      non-root users.  Copy files manually in such a case.
+
+
+6. Testing Environments
+
+    The current release has been tested in the following environments.
+
+  Machine:         PC with AMD Phenom II X4 910e (2.6GHz)
+  OS:              Solaris 10 x86
+  Compilers:       gcc-3.4.3
+
+  Machine:         Sun Blade 1500 Silver (UltraSPARC-IIIi 1.5GHz)
+  OS:              Solaris 10
+  Compilers:       gcc-3.4.3
+
+  Machine:         PC with AMD Athlon X2 5400B (2.8GHz)
+  OS:              SuSE Linux 12.3
+                     with kernel 3.7.10-1.40-desktop
+  Compilers:       gcc-4.7.2
+
+
+                        Dr. Hideaki Goto,
+                        Cyberscience Center,
+                        Tohoku University, Sendai 980-8578, Japan.
+                        email:  hgot((at))isc.tohoku.ac.jp

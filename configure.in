@@ -1,0 +1,51 @@
+dnl Process this file with autoconf to produce a configure script
+AC_PREREQ(2.53)
+AC_INIT(NHocr, 0.22, http://www.imglab.org/)
+
+AC_PREFIX_DEFAULT(/opt/nhocr)
+
+AM_INIT_AUTOMAKE([foreign])
+
+#O2DIR=O2-tools
+
+test "x$CFLAGS" = "x" && CFLAGS="-O3 --unroll-loops"
+test "x$CXXFLAGS" = "x" && CXXFLAGS="-O3 --unroll-loops"
+
+AC_ARG_ENABLE([gramd],
+	AS_HELP_STRING([--enable-gramd], [Build with gramd-client support (required for language post-processing)]), \
+	[AC_DEFINE(HAVE_LIBGRAMDCLIENT)]
+)
+AM_CONDITIONAL([BUILD_GRAMDC], test "$enable_gramd" = yes)
+
+# set default paths
+#test "x$CPPFLAGS" = "x" && CPPFLAGS="-I../${O2DIR}/include"
+#test "x$LDFLAGS" = "x" && LDFLAGS="-L../${O2DIR}/lib"
+
+CPPFLAGS="$CPPFLAGS -DDICDIR=\\\"$datadir\\\""
+
+AC_PROG_CC
+AC_PROG_CXX
+AC_PROG_RANLIB
+
+AC_PATH_XTRA
+
+AC_CONFIG_FILES([Makefile])
+
+AC_CONFIG_FILES([O2-tools/libsrc/Makefile])
+AC_CONFIG_FILES([O2-tools/libsrc/libimgo/Makefile])
+AC_CONFIG_FILES([O2-tools/libsrc/libsgp/Makefile])
+AC_CONFIG_FILES([O2-tools/libsrc/libufp/Makefile])
+AC_CONFIG_FILES([O2-tools/libsrc/objgrp/Makefile])
+AC_CONFIG_FILES([O2-tools/libsrc/siplib/Makefile])
+AC_CONFIG_FILES([O2-tools/libsrc/xiplib/Makefile])
+
+AC_CONFIG_FILES([nhocr/Makefile])
+AC_CONFIG_FILES([include/Makefile])
+AC_CONFIG_FILES([libnhocr/Makefile])
+AC_CONFIG_FILES([dic/Makefile])
+AC_CONFIG_FILES([makechar/Makefile])
+AC_CONFIG_FILES([makevec/Makefile])
+AC_CONFIG_FILES([makedic/Makefile])
+
+AC_OUTPUT
+

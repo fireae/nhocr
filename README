@@ -1,0 +1,111 @@
+----------------------------------------------------------------
+  NHocr - the Japanese OCR
+----------------------------------------------------------------
+
+1. Introduction
+
+NHocr is a command line OCR (Optical Character Recognition)
+program for Japanese language. It has been designed to recognize
+machine-printed Japanese characters and some ASCII characters
+/symbols in an image.
+NHocr is probably the first Open Source Japanese OCR software,
+except some experimental, partial codes open to academic
+communities.
+
+"nhocr" command reads PBM/PGM/PPM image file(s), recognizes the
+text line image for each file, and produces text data in UTF-8.
+Each file should contain only ONE horizontal text line image
+in line recognition mode, or only ONE text block in block
+recognition mode, without any surrounding lines or dirt.
+
+You can also use NHocr through WeOCR service at:
+  http://maggie.ocrgrid.org/nhocr/
+
+The program is highly experimental, and the character
+recognition performance is limited. (You will be happier
+with a commercial product if you want a high performance OCR.)
+
+The character feature used in NHocr is based on Peripheral 
+Local Moment (P-LM) proposed by Hori et al. in late 90's.
+
+NHocr is originally a product of the author's weekend
+programming. The development work may be rather slow.
+
+
+
+
+2. Installation and configuration
+
+1) Run configure script in the top directory.
+   Then, build and install the programs.
+
+  $ ./configure
+  $ make
+  (switch to root if necessary)
+  # make install
+
+   Add --enable-gramd option if you want to enable gramd support
+   (UNIX only). See also README-gramd.
+
+  Note: Since NHocr 0.22, a part of the image manipulation
+   library package O2-tools-2.xx, required in earlier releases,
+   is included in the source tree. There is no need to build
+   and install O2-tools separately.
+
+
+2) If you want to use dictionary files in a non-standard
+   directory, you need to specify the location by setting the
+   environment variable NHOCR_DICDIR.
+
+   For example, if the dictionary files are in /opt/nhocr/DIC ,
+
+  $ NHOCR_DICDIR=/opt/nhocr/DIC ; export NHOCR_DICDIR
+
+
+3) If you want to change the combination of character sets, you
+   can set the dictionary codes using the environment variable
+   NHOCR_DICCODES.
+
+   For example:
+
+  $ NHOCR_DICCODES=ascii+:zh_CN ; export NHOCR_DICCODES
+
+   The built-in default is ascii+:jpn for ASCII and Japanese
+   characters.
+  
+
+
+
+3. Usage
+ 
+Running nhocr without any argument will show the usage.
+A typical usage is:
+
+  $ nhocr -line -o output.txt input.pgm
+
+
+
+
+4. Using NHocr with OCRopus
+
+NHocr can be used as a line recognizer together with OCRopus,
+a document analysis and OCR system.
+
+NHocr-OCRopus bridge is included in the package.  See the Lua
+scripts in ocropus/ directory.
+
+
+
+
+5. License
+
+See LICENSE file.
+
+
+
+
+For details:
+  http://code.google.com/p/nhocr/
+  http://sourceforge.jp/projects/nhocr/
+--
+Aug. 29, 2014  Hideaki Goto,  Tohoku University, Japan

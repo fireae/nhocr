@@ -1,0 +1,62 @@
+----------------------------------------------------------------
+  Installation of "gramd" language post-processor
+----------------------------------------------------------------
+
+1. Special requirements
+
+Boost 1.34.0 or newer is required.
+
+
+2. Source codes
+
+gramd-master.zip can be found at:
+  https://github.com/asanoki/gramd
+
+libgram-master.zip can be found at:
+  https://github.com/asanoki/libgram
+
+
+3. Installation procedure
+
+Notes:
+ $ shows the prompt of a normal user.
+ # shows the prompt of the super user.
+ The installation directory /opt/gramd may be changed 
+ depending on the user's preference.
+
+$ (create a working directory and put the source 
+  archives there)
+
+$ unzip libgram-master.zip
+$ cd libgram-master
+$ ./configure --prefix=/opt/gramd
+$ make
+# make install
+$ cd ..
+
+$ unzip gramd-master.zip
+$ cd gramd-master
+$ CPPFLAGS=-I/opt/gramd/include ./configure --prefix=/opt/gramd
+$ make
+# make install
+# mkdir /opt/gramd/data
+# cp data/* /opt/gramd/data
+# bunzip2 /opt/gramd/data/*
+$ cd ..
+
+
+4. Running gramd
+
+$ /opt/gramd/bin/gramd --epsilon 0.0001 \
+ --auto /tmp/gramd.port /opt/gramd/data/ngrams-2-big.txt
+
+
+5. Using nhocr with gramd
+
+nhocr must be configured and built with --enable-gramd .
+nhocr invoked with -gramd option will use gramd through
+the port pointed by /tmp/gramd.port .
+
+--
+Documented by Hideaki Goto, Tohoku University, Japan
+May 3, 2013

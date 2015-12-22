@@ -1,0 +1,40 @@
+The License for NHocr is attached below.
+
+In addition, the author(s) would be grateful for your kind reference
+to NHocr if your work/research is based on NHocr,  although this is not
+a part of the license.
+
+----------------
+Copyright 2008-2014  Hideaki Goto
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+    http://www.apache.org/licenses/LICENSE-2.0
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+----------------
+
+
+Notes:
+NHocr package contains some codes from the following products.
+
+  Original package: bin_disc.1.5
+    License: Apache 2.0
+    Imported codes: discrim.{c,h}, otsubin.{cpp,h}
+
+  Original package: O2-tools-2.01 from http://www.imglab.org/p/O2/
+    License: A derivative of MIT-X
+    Imported codes: under subdirectory O2-tools-2.01/
+
+NHocr uses FreeType 2 licensed under BSD-like FreeType License
+(http://www.freetype.org/).
+
+The n-gram-based language post-processor "gramd" (optional) was
+developed by Tomasz Mikolajewski in his research training at
+Tohoku University, and contributed to NHocr project.
+gramd and its associated codes/data are licensed under Apache 2.0.
+

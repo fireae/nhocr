@@ -1,0 +1,129 @@
+nhocr-0.22.tar.gz : (Aug. 29, 2014)
+
+  * Some code fixes have been made.
+
+  * A part of the image manipulation library O2-tools has been
+    included in the source tree.
+
+  * Vertical writing has been supported. However, the accompanying
+    dictionaries in this release lack vertical fonts, especially in 
+    symbols. Many characters are compatible and could be recognized
+    well also in vertical documents.
+
+    The dictionaries with vertical fonts will be available in future
+    releases.
+
+
+nhocr-0.21.tar.gz : (May 3, 2013)
+
+  * Language post-processing support has been added.
+    (Server "gramd" by Tomasz Mikolajewski is required to
+     enable the feature.)
+    This feature is experimental, and some side effects may exist.
+    See also README-gramd.
+
+  * Minor bug-fixes.
+
+
+nhocr-0.20.tar.gz : (Feb. 12, 2010)
+
+  * Automatic image polarity detection has been added in the
+    multi-character recognition mode.
+
+  * makechar has been fixed. (Now it excludes SPACE character.)
+
+  * Command line parsing has been fixed.
+
+  * The location of makechar and makevec has been changed to
+    sbin/ from bin/.
+
+  * The output format in the multi-character recognition mode
+    has been revised so that it complies with the WeOCR API.
+
+  * makedic has been added.
+
+
+nhocr-0.19.tar.gz : (Dec. 31, 2009)
+
+  * Internal handling for SPACE character has been changed.
+
+  * Multi-character recognition mode (-mchar option) has been
+    added.
+
+
+nhocr-0.18.tar.gz : (Oct. 15, 2009)
+
+  * Multi-dictionary support has been added.
+
+  * Dictionaries have been revised.
+    The current character dictionaries are made from Ume-fonts
+    0.408 (http://sourceforge.jp/projects/ume-font/).
+
+  * Force-alphabet mode has been added. (experimental)
+
+  * Dictionary development tools (makechar, makevec) have
+    been added.
+
+
+nhocr-0.17.tar.gz : (May 30, 2009)
+
+  * Text block recognition mode has been added.
+
+  * Some fixes in configure script.
+
+
+nhocr-0.16.tar.gz : (May 15, 2009)
+
+  * The first source code release.
+
+  * Some code refinements for source code release.
+
+  * The license has been changed to Apache License, Version 2.0
+    from MIT-X.
+
+  * The native character code has been changed to UTF-8 from EUC-JP.
+
+  * Command name has been changed to nhocr from rec_line.
+
+  * NHocr-OCRopus bridge (Lua script) has been updated.
+
+  * Environment variable NHOCR_LIBDIR has been renamed to NHOCR_DICDIR.
+
+  * Autoconf has been introduced.
+
+
+nhocr-1.5e-32-i686-linux.tar.gz : (Dec. 31, 2008)
+
+  * A feature of reading multiple input files is supported on
+    rec_line.  This feature is useful for improving the system
+    performance by avoiding multiple OCR initializations.
+
+  * Some code refinements for forthcoming source code release.
+
+
+nhocr-1.4e-32-i686-linux.tar.gz : (Oct. 5, 2008)
+
+  * An ad-hoc tune has been made in character segmentation 
+    to improve performance with some horizontally split Japanese
+    characters.
+
+  * An ad-hoc Wide/ASCII detection mechanism has been introduced.
+
+
+nhocr-1.3e-36-i686-linux.tar.gz : (Sep. 26, 2008)
+
+  * rec_line does not print output text on the screen now.
+    A new option "-o -" will enable that.
+
+  * Automatic foreground/background detector and image
+    inverter have been added.
+
+  * A quick and dirty script of NHocr-OCRopus(0.2) bridge.
+
+  * A minor enhancement for reducing noisy output.
+
+
+nhocr-1.2e-37-i686-linux.tar.gz : (Sep. 15, 2008)
+
+  * The initial Linux i686 binary distribution of NHocr.
+

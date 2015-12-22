@@ -1,0 +1,64 @@
+----------------------------------------------------------------
+  Making a new character pattern dictionary
+    Written by H. Goto  (Rev. 20100212)
+----------------------------------------------------------------
+
+1. Preparation
+
+  The following files are required.
+  The <langcode> is the language code such as jpn.
+  (Never include < > symbols.)
+
+    cctable-<langcode> file.
+    One or more TrueType font files for the language.
+
+  You need to create your own cctable file.
+  See cctable-format.txt for the details about the cctable file.
+
+
+2. Making character image files
+
+  Type as shown below to create character image files.
+
+    $ makechar -font Font_1.ttf cctable-<langcode> Font_1.img
+    $ makechar -font Font_2.ttf cctable-<langcode> Font_2.img
+    ...
+
+  Font_N.ttf is the name of TrueType file. Proportional fonts
+  are required to support ligatures.
+  Font_N.img is the name of the output image file.
+
+  If you see a Warning message during the makechar process, you
+  should avoid using the font file or remove the character which
+  causes the warning.
+
+  Each character image file contains a list of 128x128-pixel
+  character images in binary form.
+
+
+3. Making vector files
+
+  Type as shown below to convert the character image files into
+  vector files.
+
+    $ makevec -F PLM Font_1.img Font_1.vec
+    $ makevec -F PLM Font_2.img Font_2.vec
+    ...
+
+  Font_N.vec is the name of the output vector file.
+
+
+4. Making a dictionary
+
+  Type as shown below to create a dictionary.
+
+    $ makedic -F PLM -o PLM-<langcode>.dic Font_*.vec
+
+
+5. Copy the new dictionary
+
+  Copy cctable-<langcode> and PLM-<langcode>.dic into share/
+  directory under the NHocr installation path.
+
+
+--
